@@ -7,7 +7,6 @@ apply from: "${rootDir}/libraries.gradle"
 buildDir = 'target'
 
 repositories {
-    mavenLocal()
 	mavenCentral()
 }
 
@@ -26,6 +25,6 @@ dependencies {
     runtime libs.slf4jLog4j,
             libs.log4j
 
-	testCompile libs.test.jbehave_core,
+    testCompile libs.test.jbehave_core,
             libs.test.jbehave_spring
 }
