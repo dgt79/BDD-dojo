@@ -2,6 +2,7 @@ defaultTasks 'clean', 'build'
 
 apply plugin: "java"
 apply plugin: "idea"
+apply from: "${rootDir}/libraries.gradle"
 
 buildDir = 'target'
 
@@ -20,6 +21,11 @@ idea.module {
 }
 
 dependencies {
-	testCompile 'org.jbehave:jbehave-core:3.8',
-            'junit:junit:4.11'
+    compile libs.slf4jApi
+
+    runtime libs.slf4jLog4j,
+            libs.log4j
+
+	testCompile libs.test.jbehave_core,
+            libs.test.jbehave_spring
 }

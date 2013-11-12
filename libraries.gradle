@@ -1,0 +1,14 @@
+ext {
+    slf4jVersion = '1.7.2'
+
+    libs = [
+            slf4jApi: "org.slf4j:slf4j-api:$slf4jVersion",
+            slf4jLog4j: "org.slf4j:slf4j-log4j12:$slf4jVersion",
+            log4j: 'log4j:log4j:1.2.17',
+            test: [
+                    junit: 'junit:junit:4.10',
+                    jbehave_core: 'org.jbehave:jbehave-core:3.8',
+                    jbehave_spring: 'org.jbehave:jbehave-spring:3.8'
+            ]
+    ]
+}
