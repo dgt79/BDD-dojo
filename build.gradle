@@ -1,31 +1,25 @@
+defaultTasks 'clean', 'build'
+
 apply plugin: "java"
 apply plugin: "idea"
 
+buildDir = 'target'
+
 repositories {
+    mavenLocal()
 	mavenCentral()
 }
 
+task wrapper(type: Wrapper){
+    description = 'Generates gradlew scripts for NIX and win envs'
+    gradleVersion = '1.8'
+}
+
+idea.module {
+    downloadSources = true
+}
+
 dependencies {
-	testCompile(
-			"org.jbehave:jbehave-core:3.8",
-			"junit:junit:4.11"
-	)
-}
-
-/*
- * JBehave requires the Maven's "target" folder in order
- * to obtain the absolute path from relative path.
- */
- 
- test {
- 	doFirst {
-		file('target').mkdirs();
-	}
-	doLast {
-		file('target').delete();
-	}
-}
-
-uploadArchives {
-	repositories { flatDir { dirs 'repos' } }
+	testCompile 'org.jbehave:jbehave-core:3.8',
+            'junit:junit:4.11'
 }
