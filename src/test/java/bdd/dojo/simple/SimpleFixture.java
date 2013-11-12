@@ -1,11 +1,16 @@
-package bdd.dojo;
+package bdd.dojo.simple;
 
+import org.jbehave.core.annotations.BeforeStories;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.junit.Test;
 
 import static bdd.support.BehaviouralTestEmbedder.aBehaviouralTestRunner;
 
+/**
+ * This class should 'only' mediate between the test and the core test code.  There should be
+ * nothing of substance in here.
+ */
 public class SimpleFixture {
 
     private SimpleDriver driver;
@@ -18,11 +23,9 @@ public class SimpleFixture {
                 .run();
     }
 
-    @When("we put a message on the inbound queue")
-    public void whenWePutAMessageOnTheInboundQueue() {
+    @BeforeStories
+    public void runBefore() {
+        driver = new SimpleDriver();
     }
 
-    @Then("we put the message into the database in the right form")
-    public void thenWePutTheMessageIntoTheDatabaseInTheRightForm() {
-    }
 }

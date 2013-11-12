@@ -7,8 +7,7 @@ ext {
             log4j: 'log4j:log4j:1.2.17',
             test: [
                     junit: 'junit:junit:4.10',
-                    jbehave_core: 'org.jbehave:jbehave-core:3.8',
-                    jbehave_spring: 'org.jbehave:jbehave-spring:3.8'
+                    jbehave_core: 'org.jbehave:jbehave-core:3.8'
             ]
     ]
 }

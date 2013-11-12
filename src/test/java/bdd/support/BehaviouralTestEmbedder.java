@@ -4,16 +4,13 @@ package bdd.support;
 import org.jbehave.core.ConfigurableEmbedder;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
-import org.jbehave.core.configuration.spring.SpringStoryReporterBuilder;
 import org.jbehave.core.io.LoadFromURL;
+import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.ParameterConverters;
-import org.jbehave.core.steps.spring.SpringStepsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -78,18 +75,6 @@ public class BehaviouralTestEmbedder extends ConfigurableEmbedder {
         return this;
     }
 
-    public BehaviouralTestEmbedder usingStepsConfigurationContextFrom(Class<?>... someContextClasses) {
-        assertThat(BAD_USE_OF_API_MESSAGE, stepsFactory, is(nullValue()));
-        stepsFactory = new SpringStepsFactory(configuration(), new AnnotationConfigApplicationContext(someContextClasses));
-        return this;
-    }
-
-    public BehaviouralTestEmbedder usingStepsXmlContextFrom(String... someContextResources) {
-        assertThat(BAD_USE_OF_API_MESSAGE, stepsFactory, is(nullValue()));
-        stepsFactory = new SpringStepsFactory(configuration(), new ClassPathXmlApplicationContext(someContextResources));
-        return this;
-    }
-
     private static class SandboxDateConverter extends ParameterConverters.DateConverter {
 
         public SandboxDateConverter() {
@@ -97,7 +82,7 @@ public class BehaviouralTestEmbedder extends ConfigurableEmbedder {
         }
     }
 
-    private static class SandboxStoryReporterBuilder extends SpringStoryReporterBuilder {
+    private static class SandboxStoryReporterBuilder extends StoryReporterBuilder {
 
         public SandboxStoryReporterBuilder() {
             withCodeLocation(codeLocationFromClass(SandboxStoryReporterBuilder.class));

@@ -25,6 +25,5 @@ dependencies {
     runtime libs.slf4jLog4j,
             libs.log4j
 
-    testCompile libs.test.jbehave_core,
-            libs.test.jbehave_spring
+    testCompile libs.test.jbehave_core
 }
