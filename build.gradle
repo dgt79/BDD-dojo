@@ -4,15 +4,13 @@ apply plugin: "java"
 apply plugin: "idea"
 apply from: "${rootDir}/libraries.gradle"
 
-buildDir = 'target'
-
 repositories {
 	mavenCentral()
 }
 
 task wrapper(type: Wrapper){
     description = 'Generates gradlew scripts for NIX and win envs'
-    gradleVersion = '1.8'
+    gradleVersion = '1.10'
 }
 
 idea.module {
