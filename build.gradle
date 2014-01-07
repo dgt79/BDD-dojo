@@ -4,8 +4,6 @@ apply plugin: "java"
 apply plugin: "idea"
 apply from: "${rootDir}/libraries.gradle"
 
-buildDir = 'target'
-
 repositories {
 	mavenCentral()
 }
